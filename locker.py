@@ -25,10 +25,16 @@ class Credentials:
         if password == password_ver:
             new_user = Credentials(username, password)
             print("Success! User created")
-            Credentials.login_details.append(self)
+            Credentials.save_user()
         else:
             print("Password Mismatch!")
             create_user()
+    
+    def save_user(self):
+        '''
+        Function to save contact
+        '''
+        Credentials.login_details.append(self)
 
     def user_login(self):
         def passwordChecker(self):
@@ -82,8 +88,13 @@ class User:
         print("\n")
 
         new_account = User(accountName, accountUserName, accountPassword)
+        User.save_details()
+    
+    def save_details(self):
+        '''
+        Function to save details
+        '''
         User.store.append(self)
-        
 
     @classmethod
     def view_details(cls):
@@ -104,7 +115,9 @@ class User:
                 return account
 
     @classmethod
-    def delete_detail(cls, account_name):
+    def delete_detail(cls, platform):
         '''
         Method to delete account detail
         '''
+
+        User.store.remove(platform)

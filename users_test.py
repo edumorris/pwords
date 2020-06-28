@@ -30,7 +30,7 @@ class TestUsers(unittest.TestCase):
         Test to see if the credentials are saved
         '''
 
-        self.new_account.new_details()
+        # self.new_account.new_details()
         self.assertEqual(len(User.store), 1)
     
     def test_view_details(self):
@@ -41,13 +41,19 @@ class TestUsers(unittest.TestCase):
         self.assertEqual(User.view_details(), User.store)
     
     def test_view_detail(self):
-        self.new_account.new_details()
+        # self.new_account.new_details()
         test_detail = User("Instagram", "styles", "password")
         test_detail.new_details()
 
         viewing = User.view_detail("Instagram")
         
         self.assertEqual(viewing.account_user, test_detail.account_user)
+    
+    def test_delete_detail(self):
+        test_detail = User("Linkedin", "worker", "hard")
+        User.delete_detail("Linkedin")
+
+        self.assertEqual(len(User.store), 2)
 
 if __name__ == '__main__':
     unittest.main()

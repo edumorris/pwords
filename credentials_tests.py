@@ -26,15 +26,12 @@ class TestCredentials(unittest.TestCase):
         Test to see if new user is being saved
         '''
 
-        self.new_user.create_user()
+        self.new_user.save_user()
         self.assertEqual(len(Credentials.login_details), 1)
 
     def test_login(self):
         self.existing_user.user_login()
         self.assertEqual(Credentials.user_login(), True)
-
-
-        
 
 if __name__ == '__main__':
     unittest.main()

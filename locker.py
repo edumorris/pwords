@@ -36,7 +36,7 @@ class Credentials:
         '''
         Credentials.login_details.append(self)
 
-    def user_login(self):
+    def user_login(self, userInput):
         def passwordChecker(self):
             userInput = getpass()
             password = hashlib.md5()
@@ -60,7 +60,6 @@ class Credentials:
                 print("\n Try again")
                 print()
         
-        verifier()
 
 
 class User:
@@ -119,5 +118,6 @@ class User:
         '''
         Method to delete account detail
         '''
-
-        User.store.remove(platform)
+        for account in cls.store:
+            if account.account_name == platform:
+                User.store.remove(account)

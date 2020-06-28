@@ -94,10 +94,14 @@ class User:
         return cls.store
     
     @classmethod
-    def view_detail(cls, account_name):
+    def view_detail(cls, platform):
         '''
         Method to view a single account detail
         '''
+
+        for account in cls.store:
+            if account.account_name == platform:
+                return account
 
     @classmethod
     def delete_detail(cls, account_name):

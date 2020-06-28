@@ -1,8 +1,9 @@
 import hashlib
+from getpass import getpass
 
 class LoginVerification:
     def passwordChecker(self):
-        userInput = input(str("Please enter password!"))
+        userInput = getpass()
         password = hashlib.md5()
         password.update(userInput.encode("utf-8"))
 

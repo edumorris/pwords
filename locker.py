@@ -37,42 +37,34 @@ class Credentials:
         Function to save contact
         '''
         Credentials.login_details.append(self)
-
     
-    def passwordChecker(self):
+    def user_login(self):
+        '''
+        Function implement user login
+        '''
+        
+        #Get's username and password
         userName = input()
         print('\n')
         userInput = getpass()
         password = hashlib.md5()
         password.update(userInput.encode("utf-8"))
         creds = [userName, password.hexdigest()]
-
-        return creds
-
-    def passwordStore(self):
+        
+        #Get's stored username and password
         uname = 'minion'
         userPassword = "12345678"
         sWord = hashlib.md5()
         sWord.update(userPassword.encode("utf-8"))
         cred_store = [uname, sWord.hexdigest()]
-
-        return cred_store
-
-    def verifier(self):
-        if passwordChecker() == passwordStore():
+        
+        if creds == cred_store:
             return True
             # Call to login user
         else:
             return False
             print("\n Try again")
             print()
-
-    def user_login(self):
-        '''
-        Function to call user login functions
-        '''
-
-        return verifier()
 
 class User:
     '''

@@ -16,13 +16,13 @@ def save_locker(locker):
     Function to save contact
     '''
 
-    Credentials.save_user()
+    locker.save_user()
 
 def login():
     '''
     Function to login user in
     '''
-    Credentials.user_login()
+    return Credentials.user_login()
 
 
 def create_account_entry(acc, acc_uname, acc_pwd):
@@ -36,13 +36,13 @@ def save_account_entry(account):
     '''
     Function to save account entry
     '''
-    User.save_details()
+    account.save_details()
 
 def view_account(account):
     '''
     Function to view account
     '''
-    return User.view_detail(account)
+    return account.view_detail()
 
 def view_accounts():
     '''

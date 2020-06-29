@@ -1,17 +1,16 @@
 import hashlib
 from getpass import getpass
 
-
-
 class Credentials:
     '''
     Class that checks the login details of the user
     '''
-    login_details = []
-
-    def __init__(self, username, password):
+    
+    def __init__(self):
         self.username = username
         self.password = password
+    
+    login_details = []
 
     def create_user(self, username, password):
         print("Select a username:")
@@ -39,49 +38,53 @@ class Credentials:
         '''
         Credentials.login_details.append(self)
 
+    
+    def passwordChecker(self):
+        userName = input()
+        print('\n')
+        userInput = getpass()
+        password = hashlib.md5()
+        password.update(userInput.encode("utf-8"))
+        creds = [userName, password.hexdigest()]
+
+        return creds
+
+    def passwordStore(self):
+        uname = 'minion'
+        userPassword = "12345678"
+        sWord = hashlib.md5()
+        sWord.update(userPassword.encode("utf-8"))
+        cred_store = [uname, sWord.hexdigest()]
+
+        return cred_store
+
+    def verifier(self):
+        if passwordChecker() == passwordStore():
+            return True
+            # Call to login user
+        else:
+            return False
+            print("\n Try again")
+            print()
+
     def user_login(self):
-        def passwordChecker(self):
-            userName = input()
-            print('\n')
-            userInput = getpass()
-            password = hashlib.md5()
-            password.update(userInput.encode("utf-8"))
-            creds = [userName, password.hexdigest()]
+        '''
+        Function to call user login functions
+        '''
 
-            return creds
-
-        def passwordStore(self):
-            uname = 'minion'
-            userPassword = "12345678"
-            sWord = hashlib.md5()
-            sWord.update(userPassword.encode("utf-8"))
-            cred_store = [uname, sWord.hexdigest()]
-
-            return cred_store
-
-        def verifier(self):
-            if passwordChecker() == passwordStore():
-                return True
-                # Call to login user
-            else:
-                return False
-                print("\n Try again")
-                print()
-        
-        verifier()
-
+        return verifier()
 
 class User:
     '''
     Class that get's the user details
     '''
 
-    store = []
-
     def __init__(self, account_name, account_user, account_password):
         self.account_name = account_name
         self.account_user = account_user
         self.account_password = account_password
+    
+    store = []
     
     def new_details(self):
         print("Add new account to your locker!\n")

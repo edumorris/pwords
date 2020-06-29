@@ -56,6 +56,61 @@ def main():
     '''
     Main function
     '''
+    print("!!!Welcome to the Password Locker!!!\n")
+    print("Use the follwing shortcodes to continue: \n")
+    print("lg - login\ncl - create locker")
+    print("Enter a code to continue: ")
+    short_code = input().lower()
+
+    if short_code == 'cl':
+        print("Create your new password locker: \n")
+        print("Enter your preffered username: ")
+        username = input()
+        print("Enter your preffered password: ")
+        passcode = getpass()
+        print("Confirm password: ")
+        pass_conf = getpass()
+
+        if passcode == pass_conf:
+            save_locker(create_new_locker(username, passcode))
+            save_account_entry(create_account_entry("password_locker", username, passcode))
+            print(f"New locker under username: {username}, has been created\nYou can now login using your details. Use shortcode 'lg' to login")
+            main()
+        else:
+            print("Passwords don't match! Try again!\n")
+            main()
+    elif short_code == 'lg':
+        login()
+        if True:
+            print("Welcome to your locker. Use the following shortcodes for navigation:\n")
+            print("ca - create a new entry \nva - View saved accounts \nsl - search for a saved account \nda - Delete account entry\nex -exit")
+            code = input().lower()
+            if code == "ca":
+                print("Enter new account details:\n")
+                print("Plaform name: ")
+                p_name = input()
+                print('\n')
+                print("Enter username: ")
+                p_user = input()
+                print('\n')
+                print("Enter password: ")
+                p_pwd = input()
+                print('\n')
+
+                save_account_entry(create_account_entry(p_name, p_user, p_pwd))
+                print(f"New account detail created: {p_name}, {p_user}")
+                print('\n')
+            elif code == "va":
+            elif code == "sl":
+            elif code == "da":
+            elif code == "ex":
+                print("Application closed!")
+                break
+            else:
+                print("Invalid code entered!")
+            # Codes for account navigation
+        else:
+            print("Username or password error!")
 
 if __name__ == "__main__":
     main()

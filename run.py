@@ -1,46 +1,61 @@
+import hashlib
+from getpass import getpass
+
 from locker import Credentials
 from locker import User
 
+def create_new_locker(uname, pwd):
+    '''
+    Function to create a new locker
+    '''
+
+    new_locker = Credentials(uname, pwd)
+
+def save_locker(locker):
+    '''
+    Function to save contact
+    '''
+
+    Credentials.save_user()
+
 def login():
     '''
-    Login function
+    Function to login user in
     '''
-    return Credentials.user_login()
+    Credentials.user_login()
 
-def create_account(acc_name, acc_user, acc_password):
+
+def create_account_entry(acc, acc_uname, acc_pwd):
     '''
-    New account function
+    Function to create account
     '''
-    new_account = User(acc_name, acc_user, acc_password)
+    new_account = User(acc, acc_uname, acc_pwd)
     return new_account
 
-def save_account(account):
+def save_account_entry(account):
     '''
-    Function to save new account details
+    Function to save account entry
     '''
-
     User.save_details()
+
+def view_account(account):
+    '''
+    Function to view account
+    '''
+    return User.view_detail(account)
+
+def view_accounts():
+    '''
+    Function to view saved accounts
+    '''
+    return User.view_details()
+
 
 
 def main():
     '''
-    Main Program run
+    Main function
     '''
-    print()
-    print("Welcome to the password manager!\n")
-    print("Please select an option from the short codes below:\n")
-    print(" lg - login\n cl - Create new locker")
-    print()
-    print("Enter short code:")
-    shortcode = input().lower()
-
-    if shortcode == 'cl':
-        print("Create your new account")
-        create_account()
-    elif shortcode == 'lg':
-        print("Login")
-        login()   
-
 
 if __name__ == "__main__":
     main()

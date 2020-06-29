@@ -13,7 +13,7 @@ class Credentials:
         self.username = username
         self.password = password
 
-    def create_user(self):
+    def create_user(self, username, password):
         print("Select a username:")
         print()
         username = input()
@@ -26,6 +26,9 @@ class Credentials:
             new_user = Credentials(username, password)
             print("Success! User created")
             Credentials.save_user()
+            User.store = [] # Creates an empty store
+            user_locker = User("password-locker", username, password) # Save the locker instance as a new account entry
+            User.store.append(user_locker)
         else:
             print("Password Mismatch!")
             create_user()
@@ -36,20 +39,25 @@ class Credentials:
         '''
         Credentials.login_details.append(self)
 
-    def user_login(self, userInput):
+    def user_login(self):
         def passwordChecker(self):
+            userName = input()
+            print('\n')
             userInput = getpass()
             password = hashlib.md5()
             password.update(userInput.encode("utf-8"))
+            creds = [userName, password.hexdigest()]
 
-            return password.hexdigest()
+            return creds
 
         def passwordStore(self):
+            uname = 'minion'
             userPassword = "12345678"
             sWord = hashlib.md5()
             sWord.update(userPassword.encode("utf-8"))
+            cred_store = [uname, sWord.hexdigest()]
 
-            return sWord.hexdigest()
+            return cred_store
 
         def verifier(self):
             if passwordChecker() == passwordStore():
@@ -60,6 +68,7 @@ class Credentials:
                 print("\n Try again")
                 print()
         
+        verifier()
 
 
 class User:

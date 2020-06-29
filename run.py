@@ -10,6 +10,7 @@ def create_new_locker(uname, pwd):
     '''
 
     new_locker = Credentials(uname, pwd)
+    return new_locker
 
 def save_locker(locker):
     '''
@@ -57,7 +58,7 @@ def main():
     Main function
     '''
     print("!!!Welcome to the Password Locker!!!\n")
-    print("Use the follwing shortcodes to continue: \n")
+    print("Use the following shortcodes to continue: \n")
     print("lg - login\ncl - create locker")
     print("Enter a code to continue: ")
     short_code = input().lower()
@@ -73,7 +74,7 @@ def main():
 
         if passcode == pass_conf:
             save_locker(create_new_locker(username, passcode))
-            save_account_entry(create_account_entry("password_locker", username, passcode))
+            # save_account_entry(create_account_entry("password_locker", username, passcode))
             print(f"New locker under username: {username}, has been created\nYou can now login using your details. Use shortcode 'lg' to login")
             main()
         else:

@@ -6,7 +6,7 @@ class Credentials:
     Class that checks the login details of the user
     '''
     
-    def __init__(self):
+    def __init__(self, username, password):
         self.username = username
         self.password = password
     

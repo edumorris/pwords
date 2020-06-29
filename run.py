@@ -101,11 +101,22 @@ def main():
                 print(f"New account detail created: {p_name}, {p_user}")
                 print('\n')
             elif code == "va":
+                print("Accounts in locker:\n")
+
+                for account in view_accounts():
+                    print(f"{account.accountName}, {account. accountUserName}, {account.accountPassword}")     
             elif code == "sl":
+                print("Enter account you want to search for: ")
+                platform_name = input()
+                account_info = view_account(platform_name)
+                print(f"{account_info.accountName}, {account_info.accountUserName, account_info.accountPassword}")
             elif code == "da":
+                # Code to delete account entry
+                print("Enter name for account to delete: \n")
+                del_acc = input()
             elif code == "ex":
                 print("Application closed!")
-                break
+                
             else:
                 print("Invalid code entered!")
             # Codes for account navigation

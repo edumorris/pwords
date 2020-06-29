@@ -7,11 +7,20 @@ def login():
     '''
     return Credentials.user_login()
 
-def create_account(self):
+def create_account(acc_name, acc_user, acc_password):
     '''
     New account function
     '''
-    return Credentials.create_user()
+    new_account = User(acc_name, acc_user, acc_password)
+    return new_account
+
+def save_account(account):
+    '''
+    Function to save new account details
+    '''
+
+    User.save_details()
+
 
 def main():
     '''

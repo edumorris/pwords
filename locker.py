@@ -38,7 +38,7 @@ class Credentials:
         '''
         Credentials.login_details.append(self)
     
-    def user_login(self):
+    def user_login(self, userName, userInput):
         '''
         Function implement user login
         '''

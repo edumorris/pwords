@@ -19,12 +19,29 @@ def save_locker(locker):
 
     locker.save_user()
 
-def login():
+def login(userName, userInput):
     '''
     Function to login user in
     '''
-    return Credentials.user_login()
-
+    userName = input()
+    print('\n')
+    userInput = getpass()
+    password = hashlib.md5()
+    password.update(userInput.encode("utf-8"))
+    creds = userInput # password.hexdigest()
+        
+    #Get's stored username and password
+    uname = 'minion'
+    userPassword = "12345678"
+    sWord = hashlib.md5()
+    sWord.update(userPassword.encode("utf-8"))
+    cred_store = userPassword # sWord.hexdigest()
+        
+    if creds == cred_store:
+        return True
+        # Call to login user
+    else:
+        return False
 
 def create_account_entry(acc, acc_uname, acc_pwd):
     '''
@@ -81,8 +98,15 @@ def main():
             print("Passwords don't match! Try again!\n")
             main()
     elif short_code == 'lg':
-        login()
-        if True:
+        print("Enter your username: ")
+        u_name = input()
+        print('\n')
+        print("You might need to enter the password twice. Press enter if stuck at password\n")
+        print("Enter your password: ")
+        u_pwd = getpass()
+        print('\n')
+
+        if login(u_name, u_pwd):
             print("Welcome to your locker. Use the following shortcodes for navigation:\n")
             print("ca - create a new entry \nva - View saved accounts \nsl - search for a saved account \nda - Delete account entry\nex -exit")
             code = input().lower()
@@ -123,6 +147,7 @@ def main():
             # Codes for account navigation
         else:
             print("Username or password error!")
+            main()
 
 if __name__ == '__main__':
     
